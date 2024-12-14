@@ -1,0 +1,44 @@
+<odoo>
+   <!-- client_view_tree inheriting from owner_view_tree -->
+    <record id="client_view_tree" model="ir.ui.view">
+        <field name="name">client.tree</field>
+        <field name="model">client</field>
+        <field name="inherit_id" ref="first_app.owner_view_tree"/> <!-- Correct reference to owner_view_tree -->
+        <field name="arch" type="xml">
+<!--            inside /before/after/replace?-->
+            <xpath expr="//tree" position="inside">
+                <field name="client_code"/> <!-- Add the client_code field -->
+            </xpath>
+        </field>
+    </record>
+
+    <!-- client_view_form inheriting from owner_view_form -->
+    <record id="client_view_form" model="ir.ui.view">
+        <field name="name">client.form</field>
+        <field name="model">client</field>
+        <field name="inherit_id" ref="first_app.owner_view_form"/> <!-- Correct reference to owner_view_form -->
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group>
+                    <field name="client_code"/> <!-- Add the client_code field -->
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Client Action -->
+    <record id="client_action" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">client</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Client Menu Item -->
+    <menuitem
+        id="client_menu_item"
+        name="Clients"
+        parent="Configuration_menu"
+        action="client_action"
+    />
+</odoo>

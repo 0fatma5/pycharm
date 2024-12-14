@@ -1,0 +1,60 @@
+<odoo>
+    <record id="property_report" model="ir.actions.report">
+<!--        esm el report that appears to end user-->
+        <field name="name">property Report</field>
+        <field name="model">property</field>
+<!--      eldefault pdf  qweb-html -->
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_property"/>
+<!--        yzhr f button lw7do fel tree view,form-->
+        <field name="binding_type">report</field>
+        <field name="report_name">first_app.property_report_template</field>
+    </record>
+    <template id="property_report_template">
+        <!-- Template in QWeb  momkn t hnadle dh 3n dtare2 ui ad5ol 3ala el setting>>-->
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+<!--            zy el external bs m3andha4 footer /header/pages-->
+<!--                <t t-call="web.basic_layout">-->
+                <!-- Loop through the documents -->
+<!--                    bootsrap/html/css-->
+                <t t-foreach="docs" t-as="o">
+                    <h1>Property Report</h1>
+        <h1>Property Report</h1>
+        <style>
+            table {
+                width: 100%;
+                border: 1px solid #b3adad;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            table th {
+                border: 1px solid #b3adad;
+                padding: 5px;
+                background: #f0f0f0;
+                color: #313030;
+            }
+            table td {
+                border: 1px solid #b3adad;
+                text-align: center; /* Corrected 'cenrer' to 'center' */
+                padding: 5px;
+                background: #ffffff;
+                color: #313030;
+            }
+        </style>
+
+                    <thead>
+                        <th colspan="4"> General Information</th>
+                    </thead>
+                    <tbody>
+                        <td>Name</td>
+                        <td></td>
+                        <td>PostCode</td>
+                        <td></td>
+                    </tbody>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
